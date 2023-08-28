@@ -1,0 +1,27 @@
+.header {
+  display: flex;
+  padding: 20px;
+  &_logo {
+    width: 100px;
+    height: 100px;
+    flex: 1;
+    font-family: "Bowlby One", cursive;
+    font-weight: 500;
+    font-size: 26px;
+
+    img {
+      width: auto;
+      height: 100%;
+    }
+  }
+  &_links {
+    display: flex;
+    gap: 30px;
+    img {
+      transition: all 0.5 ease-in;
+      &:hover {
+        transform: scale(1.1);
+      }
+    }
+  }
+}
