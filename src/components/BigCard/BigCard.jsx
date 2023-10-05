@@ -3,12 +3,9 @@ import { useRef } from "react";
 
 import { useDispatch, useSelector } from "react-redux";
 import AddButtonOnCart from "../AddButtonOnCart/AddButtonOnCart";
-import {
-  CartCounterDecrease,
-  CartCounterIncrease,
-  removePopUp,
-} from "../../store/bigCartSlice";
+import { removePopUp } from "../../store/bigCartSlice";
 import CountButton from "../CountButton/CountButton";
+import AddButtonToFavorite from "../AddButtonToFavorite/AddButtonToFavorite";
 
 function BigCard() {
   const dispatch = useDispatch();
@@ -16,7 +13,7 @@ function BigCard() {
   const cartNumber = useSelector((state) => state.bigCartSlice.bigCart);
   const fullCartList = useSelector((state) => state.bigCartSlice.shopData);
   const cart = fullCartList.find((item) => item.id === cartNumber);
-
+  const card = "big";
   const removeCart = (event) => {
     if (event.target === bigCardRef.current) {
       dispatch(removePopUp());
@@ -41,12 +38,13 @@ function BigCard() {
             <CountButton titleForButton={"-"} idFor={cart.id} />
             <span>{cart.counter}</span>
             <CountButton titleForButton={"+"} idFor={cart.id} />
-            <AddButtonOnCart />
+            <AddButtonOnCart id={cart.id} />
           </div>
           <div className="cardFullSize_info__discription">
             {cart.description}
           </div>
         </div>
+        <AddButtonToFavorite card={card} id={cart.id} />
       </div>
     </div>
   );

@@ -29,7 +29,7 @@ export const bigCartSlice = createSlice({
     addPopUp(state, action) {
       state.bigCart = action.payload;
     },
-    removePopUp(state, action) {
+    removePopUp(state) {
       state.bigCart = 0;
     },
     CartCounterIncrease(state, action) {
@@ -48,6 +48,24 @@ export const bigCartSlice = createSlice({
         }
       }
     },
+    toggleCart(state, action) {
+      const itemToAdd = action.payload;
+      const index = state.cart.findIndex((item) => item === itemToAdd);
+      if (index === -1) {
+        state.cart.push(itemToAdd);
+      } else {
+        state.cart = state.cart.filter((item) => item !== itemToAdd);
+      }
+    },
+    toggleFavorite(state, action) {
+      const itemToAdd = action.payload;
+      const index = state.favorite.findIndex((item) => item === itemToAdd);
+      if (index === -1) {
+        state.favorite.push(itemToAdd);
+      } else {
+        state.favorite = state.favorite.filter((item) => item !== itemToAdd);
+      }
+    },
   },
   extraReducers: (builder) => {
     builder.addCase(fetchShopData.fulfilled, (state, action) => {
@@ -61,5 +79,7 @@ export const {
   removePopUp,
   CartCounterIncrease,
   CartCounterDecrease,
+  toggleCart,
+  toggleFavorite,
 } = bigCartSlice.actions;
 export default bigCartSlice.reducer;

@@ -30,19 +30,6 @@
     object-fit: contain;
     align-self: center;
   }
-  &__heart {
-    background-color: transparent;
-    border: none;
-    position: absolute;
-    top: 20px;
-    right: 10px;
-    path {
-      fill: rgb(215, 210, 210);
-      &:hover {
-        fill: rgb(253, 171, 185);
-      }
-    }
-  }
   &__counter {
     display: flex;
     justify-content: space-between;

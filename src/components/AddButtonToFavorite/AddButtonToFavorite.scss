@@ -1,0 +1,16 @@
+.addToFavoriteButton {
+  background-color: transparent;
+  border: none;
+  position: absolute;
+  top: 20px;
+  right: 10px;
+  display: flex;
+  align-items: center;
+  transition: all 0.3 ease-in;
+  &:hover {
+    color: rgb(253, 171, 185);
+    path {
+      fill: rgb(253, 171, 185);
+    }
+  }
+}
