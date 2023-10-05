@@ -1,0 +1,19 @@
+.addButtonOnCart {
+  display: flex;
+  gap: 5px;
+  align-items: center;
+  transition: all 0.3s ease-in;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  path {
+    stroke: #000000;
+    transition: all 0.3s ease-in;
+  }
+  &:hover {
+    color: rgb(250, 250, 206);
+    path {
+      stroke: rgb(250, 250, 206);
+    }
+  }
+}

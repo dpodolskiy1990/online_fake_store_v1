@@ -1,14 +1,28 @@
 .small_card {
+  position: relative;
   width: 300px;
   border-radius: 32px;
   box-shadow: 0px 0px 16px 2px rgba(0, 0, 0, 0.5);
   display: flex;
   flex-direction: column;
   align-items: flex-start;
+  justify-content: space-between;
   padding: 10px;
   transition: box-shadow 0.3s ease-in;
+
   &:hover {
     box-shadow: 0px 0px 16px 2px rgba(0, 0, 0, 1);
+  }
+  h5 {
+    margin: 0;
+    display: flex;
+    gap: 10px;
+    align-items: center;
+  }
+  h6 {
+    margin-top: 5px;
+    margin-bottom: 10px;
+    font-size: 24px;
   }
   &__img {
     width: 250px;
@@ -19,10 +33,44 @@
   &__heart {
     background-color: transparent;
     border: none;
+    position: absolute;
+    top: 20px;
+    right: 10px;
     path {
       fill: rgb(215, 210, 210);
       &:hover {
         fill: rgb(253, 171, 185);
+      }
+    }
+  }
+  &__counter {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    margin-bottom: 20px;
+
+    div {
+      &:first-of-type {
+        display: flex;
+        gap: 5px;
+        align-items: center;
+        button {
+          width: 30px;
+          height: 30px;
+          border: 1px solid rgb(218, 216, 216);
+          background-color: transparent;
+          border-radius: 5px;
+          transition: all 0.3s ease-in;
+          &:hover {
+            background-color: rgb(218, 216, 216);
+            border: none;
+          }
+          &:disabled {
+            border: 1px solid transparent;
+            background-color: transparent;
+            color: transparent;
+          }
+        }
       }
     }
   }

@@ -1,38 +1,37 @@
-import { useEffect } from "react";
-import Small_card from "../Small_card/Small_card";
 import "./Body.scss";
-import { useState } from "react";
-import axios from "axios";
+
+import { useSelector, useDispatch } from "react-redux";
+import { useEffect, useState } from "react";
+import Small_card from "../Small_card/Small_card";
+import { fetchShopData } from "../../store/bigCartSlice";
 
 function Body() {
-  const [shop, setShop] = useState([]);
-  useEffect(() => {
-    const fetchFakestoreData = async () => {
-      try {
-        const response = await axios.get("https://fakestoreapi.com/products");
-        return response.data;
-      } catch (error) {
-        console.error("Error fetching fakestore data:", error);
-        return [];
-      }
-    };
+  const shopData = useSelector((state) => state.bigCartSlice.shopData);
+  const [category, setCategory] = useState("");
 
-    fetchFakestoreData().then((data) => setShop(data));
-  }, []);
   return (
     <div className="body">
       <div className="body_title">
         <h2>Catalog</h2>
         <div className="body_title__buttons">
-          <button>ALL</button>
-          <button>MEN'S CLOTHING</button>
-          <button>JEWELRY</button>
-          <button>ELECTRONICS</button>
-          <button>WOMEN'S CLOTHING</button>
+          <button onClick={() => setCategory("")}>ALL</button>
+          <button onClick={() => setCategory("men's clothing")}>
+            MEN'S CLOTHING
+          </button>
+          <button onClick={() => setCategory("jewelery")}>JEWELRY</button>
+          <button onClick={() => setCategory("electronics")}>
+            ELECTRONICS
+          </button>
+          <button onClick={() => setCategory("women's clothing")}>
+            WOMEN'S CLOTHING
+          </button>
         </div>
       </div>
       <div className="body_catalog">
-        {shop && shop.map((item) => <Small_card key={item.id} data={item} />)}
+        {shopData &&
+          shopData
+            .filter((item) => (category ? item.category == category : item))
+            .map((item) => <Small_card key={item.id} data={item} />)}
       </div>
     </div>
   );
